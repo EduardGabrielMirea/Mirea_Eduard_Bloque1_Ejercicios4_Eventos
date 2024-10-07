@@ -1,33 +1,21 @@
 document.addEventListener("DOMContentLoaded",function () {
-    // Función para generar los botones
-    function generarBotones(numBotones) {
-        const container = document.getElementById('botones-container');
+   
+   function generarBotones(numeroDeBotones) {
+       var contenedor = document.getElementById("botones-container");
 
-        // Limpiamos el contenedor antes de añadir botones
-        container.innerHTML = '';
+       for (let i = 1; i <= numeroDeBotones; i++) {
+        const  button = document.createElement("button");
+        button.textContent = `Botón ${i}`;
 
-        // Crear tantos botones como se indique
-        for (let i = 1; i <= numBotones; i++) {
-            const boton = document.createElement('button');
-            boton.textContent = `Botón ${i}`;
-
-            // Añadir el evento click a cada botón
-            boton.addEventListener('click', function() {
-                mostrarMensaje();
+            button.addEventListener("click",function () {
+                var mensaje = document.getElementById("mensaje");
+                mensaje.textContent = `Has pulsado el botón ${i}`;
             });
+            contenedor.appendChild(button);
+       }
+   }
 
-            // Añadir el botón al contenedor
-            container.appendChild(boton);
-        }
-    }
-
-    // Función para mostrar el mensaje cuando se pulsa un botón
-    function mostrarMensaje() {
-        const mensaje = document.getElementById('mensaje');
-        mensaje.textContent = 'Has pulsado sobre un botón';
-    }
-
-    // Generar botones de forma dinámica, puedes cambiar este número
-    const numeroDeBotones = 5; // Cambia este número para generar más botones
-    generarBotones(numeroDeBotones);
+   const numeroDeBotones = 5;
+   generarBotones(numeroDeBotones);
+   
 });
